@@ -2,6 +2,48 @@
 
 namespace 初试
 {
+    //3、 根据海伦公式计算三角形的面积。
+    //海伦公式： 假设在平面内，有一个三角形，边长分别为 a、 b、 c，那么三角形的面积 S 可由海伦公式求得：
+    //S=Math.sqrt(p*(p-a)(p-b)(p-c)) 注：公式里的 p 为半周长： p=(a+b+c)/2
+    class Triangle
+    {
+        public double GetS(double a,double b,double c)
+        {
+            double P = (a + b + c) / 2;
+            double S = Math.Sqrt(P * (P - a)*(P - b)*(P - c));
+            return S;
+        }
+    }
+
+    //1.创建员工对象并赋值，使用无参构造。
+    //2.定义并使用有参构造方法创建对象
+    //3.使用初始化器创建对象
+    class Empoyee
+    {
+        public String EmpId;
+        public String Name;
+        public String PassWord;
+        public String Department;
+        public DateTime Birthday;
+
+        //无参
+        public Empoyee()
+        {
+            Console.WriteLine("无参构建");
+        }
+
+        //有参
+        public Empoyee(string name, string password, string department, string empid, DateTime birthday)
+        {
+            this.Name = name;
+            this.PassWord = password;
+            this.Department = department;
+            this.EmpId = empid;
+            this.Birthday = birthday;
+        }
+
+    }
+
     class Program
     {
         static void Main(string[] args)
@@ -783,115 +825,184 @@ namespace 初试
 
 
 
-            //获取输入的年份year
-            Console.WriteLine("请输入年份:");
-            int year = int.Parse(Console.ReadLine());
-            //获取输入的月份month
-            Console.WriteLine("请输入月份:");
-            int month = int.Parse(Console.ReadLine());
-            //调用方法得到输入的年月距1900年1月的天数并输出
-            int SumDays = GetSumDays(year, month);
-            Console.WriteLine("{0}年{1}月距离1900年1月1日有{2}天", year, month, SumDays);
-            Console.WriteLine("星期日\t星期一\t星期二\t星期三\t星期四\t星期五\t星期六");
-            //判断某月的1号是星期几兵放到对应上面"星期"的位置
-            int week = SumDays % 7 + 1;
-            if (week != 7)
+            ////获取输入的年份year
+            //Console.WriteLine("请输入年份:");
+            //int year = int.Parse(Console.ReadLine());
+            ////获取输入的月份month
+            //Console.WriteLine("请输入月份:");
+            //int month = int.Parse(Console.ReadLine());
+            ////调用方法得到输入的年月距1900年1月的天数并输出
+            //int SumDays = GetSumDays(year, month);
+            //Console.WriteLine("{0}年{1}月距离1900年1月1日有{2}天", year, month, SumDays);
+            //Console.WriteLine("星期日\t星期一\t星期二\t星期三\t星期四\t星期五\t星期六");
+            ////判断某月的1号是星期几兵放到对应上面"星期"的位置
+            //int week = SumDays % 7 + 1;
+            //if (week != 7)
+            //{
+            //    for (int i = 1; i <= week; i++)
+            //    {
+            //        Console.Write("\t");
+            //    }
+            //}
+            ////获取输入的月份的天数,并打印出来，如果碰到周六则换行
+            //int MonthDays = GetMonth(year, month);
+            //for (int i = 1; i <= MonthDays; i++)
+            //{
+            //    Console.Write("{0}\t", i);
+            //    if ((SumDays + i) % 7 == 6)
+            //    {
+            //        Console.WriteLine();
+            //    }
+            //}
+
+            //int[] arr = { '1', '2', '3', 'a', 'b' };
+            //for (int i = 0; i < 5; i++)
+            //{
+            //    Console.Write(arr[i] + ", ");
+            //}
+
+
+            //1.创建员工对象并赋值，使用无参构造。
+            //2.定义并使用有参构造方法创建对象
+            //3.使用初始化器创建对象
+            //任务拓展：定义一个描述三角形的类 Triangle，要求如下：
+            //3、 根据海伦公式计算三角形的面积。
+            //海伦公式： 假设在平面内，有一个三角形，边长分别为 a、 b、 c，那么三角形的面积 S 可由海伦公式求得：
+            //S=Math.sqrt(p*(p-a)(p-b)(p-c)) 注：公式里的 p 为半周长： p=(a+b+c)/2
+
+
+
+
+            //1.定义结构体要使用 struct 关键字，现在我们定义一个学员信息的结构体Student。
+            //包含三个成员变量（学号StuCode 生日Birthday  姓名Name）
+            //一个方法（一个 GetAge 的方法，根据出生日期来来获取一个年龄）。
+            //在Main方法中使用 Student来创建变量，并读写其中（结构体是复合类型）的值，调用方法完成测试。
+            Student stu = new Student();
+            stu.Name = "张三";
+            stu.Birthday = DateTime.Parse("2000.08.27");
+            stu.StuCode = "001";
+            Console.WriteLine("姓名:{0}\n生日:{1}\n学号:{2}\n年龄:{3}", stu.Name, stu.Birthday, stu.StuCode, stu.GetAge());
+
+            //1.创建员工对象并赋值，使用无参构造。
+            //2.定义并使用有参构造方法创建对象
+            //3.使用初始化器创建对象
+            Empoyee emp = new Empoyee();
+            emp.Name = "张三";
+            emp.PassWord = "123456";
+            emp.EmpId = "001";
+            emp.Department = "人事部";
+            emp.Birthday = DateTime.Parse("1980.01.01");
+            Console.WriteLine("姓名:{0}\n密码:{1}\n工号:{2}\n部门:{3}\n生日:{4}", emp.Name, emp.PassWord, emp.EmpId, emp.Department, emp.Birthday);
+            Empoyee emp1 = new Empoyee("王五", "123456", "003", "人事部", DateTime.Parse("1998.1.1"));
+            Console.WriteLine("姓名:{0}\n密码:{1}\n工号:{2}\n部门:{3}\n生日:{4}", emp.Name, emp.PassWord, emp.EmpId, emp.Department, emp.Birthday);
+
+
+
+            //3、 根据海伦公式计算三角形的面积。
+            //海伦公式： 假设在平面内，有一个三角形，边长分别为 a、 b、 c，那么三角形的面积 S 可由海伦公式求得：
+            //S=Math.sqrt(p*(p-a)(p-b)(p-c)) 注：公式里的 p 为半周长： p=(a+b+c)/2
+            Triangle tri = new Triangle();
+            double a = tri.GetS(3,6,5);
+            Console.WriteLine(a);
+        }
+
+        //1.定义结构体要使用 struct 关键字，现在我们定义一个学员信息的结构体Student。
+        //包含三个成员变量（学号StuCode 生日Birthday  姓名Name）
+        //一个方法（一个 GetAge 的方法，根据出生日期来来获取一个年龄）。
+        //在Main方法中使用 Student来创建变量，并读写其中（结构体是复合类型）的值，调用方法完成测试
+        struct Student
+        {
+            public string StuCode;
+            public DateTime Birthday;
+            public string Name;
+
+            public int GetAge()
             {
-                for (int i = 1; i <= week; i++)
-                {
-                    Console.Write("\t");
-                }
-            }
-            //获取输入的月份的天数,并打印出来，如果碰到周六则换行
-            int MonthDays = GetMonth(year, month);
-            for (int i = 1; i <= MonthDays; i++)
-            {
-                Console.Write("{0}\t", i);
-                if ((SumDays + i) % 7 == 6)
-                {
-                    Console.WriteLine();
-                }
+                int Age = DateTime.Now.Year - Birthday.Year;
+                return Age;
             }
         }
+
+
         //判断是否是闰年
-        public static bool IsR(int year)
-        {
-            bool isR;
-            if (year % 100 != 0 && year % 4 == 0 || year % 400 == 0)
-            {
-                isR = true;
-            }
-            else
-            {
-                isR = false;
-            }
-            return isR;
-        }
+        //public static bool IsR(int year)
+        //{
+        //    bool isR;
+        //    if (year % 100 != 0 && year % 4 == 0 || year % 400 == 0)
+        //    {
+        //        isR = true;
+        //    }
+        //    else
+        //    {
+        //        isR = false;
+        //    }
+        //    return isR;
+        //}
 
-        //某年的天数
-        public static int GetYear(int year)
-        {
-            int years = 0;
-            if (IsR(year))
-            {
-                years = 366;
-            }
-            else
-            {
-                years = 365;
-            }
-            return years;
-        }
+        ////某年的天数
+        //public static int GetYear(int year)
+        //{
+        //    int years = 0;
+        //    if (IsR(year))
+        //    {
+        //        years = 366;
+        //    }
+        //    else
+        //    {
+        //        years = 365;
+        //    }
+        //    return years;
+        //}
 
-        //某年某月的天数
-        public static int GetMonth(int year, int month)
-        {
-            int months = 0;
-            switch (month)
-            {
-                case 1:
-                case 3:
-                case 5:
-                case 7:
-                case 8:
-                case 10:
-                case 12:
-                    months = 31;
-                    break;
-                case 4:
-                case 6:
-                case 9:
-                case 11:
-                    months = 30;
-                    break;
-                case 2:
-                    if (IsR(year))
-                    {
-                        months = 29;
-                    }
-                    else
-                    {
-                        months = 28;
-                    }
-                    break;
-            }
-            return months;
-        }
+        ////某年某月的天数
+        //public static int GetMonth(int year, int month)
+        //{
+        //    int months = 0;
+        //    switch (month)
+        //    {
+        //        case 1:
+        //        case 3:
+        //        case 5:
+        //        case 7:
+        //        case 8:
+        //        case 10:
+        //        case 12:
+        //            months = 31;
+        //            break;
+        //        case 4:
+        //        case 6:
+        //        case 9:
+        //        case 11:
+        //            months = 30;
+        //            break;
+        //        case 2:
+        //            if (IsR(year))
+        //            {
+        //                months = 29;
+        //            }
+        //            else
+        //            {
+        //                months = 28;
+        //            }
+        //            break;
+        //    }
+        //    return months;
+        //}
 
-        //距离1900/1/1的天数
-        public static int GetSumDays(int year, int month)
-        {
-            int SumDays = 0;
-            for (int i = 1900; i < year; i++)
-            {
-                SumDays += GetYear(i);
-            }
-            for (int j = 1; j < month; j++)
-            {
-                SumDays += GetMonth(year, j);
-            }
-            return SumDays;
-        }
+        ////距离1900/1/1的天数
+        //public static int GetSumDays(int year, int month)
+        //{
+        //    int SumDays = 0;
+        //    for (int i = 1900; i < year; i++)
+        //    {
+        //        SumDays += GetYear(i);
+        //    }
+        //    for (int j = 1; j < month; j++)
+        //    {
+        //        SumDays += GetMonth(year, j);
+        //    }
+        //    return SumDays;
+        //}
 
 
         //private static double[] GetAry()
@@ -930,8 +1041,6 @@ namespace 初试
         //    }
         //    return max;
         //}
-
-
 
     }
 }
