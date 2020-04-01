@@ -2,18 +2,7 @@
 
 namespace 初试
 {
-    //3、 根据海伦公式计算三角形的面积。
-    //海伦公式： 假设在平面内，有一个三角形，边长分别为 a、 b、 c，那么三角形的面积 S 可由海伦公式求得：
-    //S=Math.sqrt(p*(p-a)(p-b)(p-c)) 注：公式里的 p 为半周长： p=(a+b+c)/2
-    class Triangle
-    {
-        public double GetS(double a,double b,double c)
-        {
-            double P = (a + b + c) / 2;
-            double S = Math.Sqrt(P * (P - a)*(P - b)*(P - c));
-            return S;
-        }
-    }
+
 
     //1.创建员工对象并赋值，使用无参构造。
     //2.定义并使用有参构造方法创建对象
@@ -44,10 +33,116 @@ namespace 初试
 
     }
 
+    //三角面积
+    class Triangle
+    {
+        public double a;
+        public double b;
+        public double c;
+
+        public double GetS()
+        {
+            double P = (a + b + c) / 2;
+            double S = Math.Sqrt(P * (P - a) * (P - b) * (P - c));
+            return S;
+        }
+    }
+
     class Program
     {
+        // 猜拳 随机数
+        public static int Round()
+        {
+            Random r = new Random();
+            int num = r.Next(0, 3);
+            return num;
+        }
+
+        //猜拳 胜负
+        private static void IsWin(int a, int b)
+        {
+            if (a == b)
+            {
+                Console.WriteLine("平局");
+            }
+            else if ((a == 0 && b == 1) || (a == 1 && b == 2) || (a == 2 && b == 0))
+            {
+                Console.WriteLine("你赢了");
+            }
+            else
+            {
+                Console.WriteLine("你输了");
+            }
+            IsWhat(a, "玩家出");
+            IsWhat(b, "电脑出");
+        }
+
+        //猜拳 出拳
+        private static void IsWhat(int sum, string name)
+        {
+            switch (sum)
+            {
+                case 0:
+                    Console.WriteLine(name + "剪刀");
+                    break;
+                case 1:
+                    Console.WriteLine(name + "包袱");
+                    break;
+                case 2:
+                    Console.WriteLine(name + "锤头");
+                    break;
+            }
+        }
+
         static void Main(string[] args)
         {
+
+            //猜拳
+            Console.WriteLine("--------------------");
+            Console.WriteLine("0 剪刀\n1 包袱\n2 锤头\n3 退出");
+            Console.WriteLine("--------------------");
+
+            int num;
+            do
+            {
+                Console.WriteLine("\n机器人已出拳");
+                Console.WriteLine("请出拳...");
+                num = int.Parse(Console.ReadLine());
+                switch (num)
+                {
+                    case 0:
+                        IsWin(num, Round());
+                        break;
+                    case 1:
+                        IsWin(num, Round());
+                        break;
+                    case 2:
+                        IsWin(num, Round());
+                        break;
+                    case 3:
+                        Console.WriteLine("游戏已退出");
+                        break;
+                    default:
+                        Console.WriteLine("请正确输入!");
+                        break;
+                }
+            } while (num != 3);
+
+            //三角面积
+            Triangle tri = new Triangle();
+            Console.WriteLine("请输入边1");
+            tri.a = int.Parse(Console.ReadLine());
+            Console.WriteLine("请输入边2");
+            tri.b = int.Parse(Console.ReadLine());
+            Console.WriteLine("请输入边3");
+            tri.c = int.Parse(Console.ReadLine());
+            Console.WriteLine(tri.GetS());
+
+
+
+
+            //string a = Console.ReadLine();
+            //Jusic(a);
             ////第一题
             ///*方法一*/
             //Console.WriteLine("*********************************" +
@@ -877,33 +972,27 @@ namespace 初试
             //包含三个成员变量（学号StuCode 生日Birthday  姓名Name）
             //一个方法（一个 GetAge 的方法，根据出生日期来来获取一个年龄）。
             //在Main方法中使用 Student来创建变量，并读写其中（结构体是复合类型）的值，调用方法完成测试。
-            Student stu = new Student();
-            stu.Name = "张三";
-            stu.Birthday = DateTime.Parse("2000.08.27");
-            stu.StuCode = "001";
-            Console.WriteLine("姓名:{0}\n生日:{1}\n学号:{2}\n年龄:{3}", stu.Name, stu.Birthday, stu.StuCode, stu.GetAge());
+            //Student stu = new Student();
+            //stu.Name = "张三";
+            //stu.Birthday = DateTime.Parse("2000.08.27");
+            //stu.StuCode = "001";
+            //Console.WriteLine("姓名:{0}\n生日:{1}\n学号:{2}\n年龄:{3}", stu.Name, stu.Birthday, stu.StuCode, stu.GetAge());
 
             //1.创建员工对象并赋值，使用无参构造。
             //2.定义并使用有参构造方法创建对象
             //3.使用初始化器创建对象
-            Empoyee emp = new Empoyee();
-            emp.Name = "张三";
-            emp.PassWord = "123456";
-            emp.EmpId = "001";
-            emp.Department = "人事部";
-            emp.Birthday = DateTime.Parse("1980.01.01");
-            Console.WriteLine("姓名:{0}\n密码:{1}\n工号:{2}\n部门:{3}\n生日:{4}", emp.Name, emp.PassWord, emp.EmpId, emp.Department, emp.Birthday);
-            Empoyee emp1 = new Empoyee("王五", "123456", "003", "人事部", DateTime.Parse("1998.1.1"));
-            Console.WriteLine("姓名:{0}\n密码:{1}\n工号:{2}\n部门:{3}\n生日:{4}", emp.Name, emp.PassWord, emp.EmpId, emp.Department, emp.Birthday);
+            //Empoyee emp = new Empoyee();
+            //emp.Name = "张三";
+            //emp.PassWord = "123456";
+            //emp.EmpId = "001";
+            //emp.Department = "人事部";
+            //emp.Birthday = DateTime.Parse("1980.01.01");
+            //Console.WriteLine("姓名:{0}\n密码:{1}\n工号:{2}\n部门:{3}\n生日:{4}", emp.Name, emp.PassWord, emp.EmpId, emp.Department, emp.Birthday);
+            ////Empoyee emp1 = new Empoyee("王五", "123456", "003", "人事部", DateTime.Parse("1998.1.1"));
+            ////Console.WriteLine("姓名:{0}\n密码:{1}\n工号:{2}\n部门:{3}\n生日:{4}", emp.Name, emp.PassWord, emp.EmpId, emp.Department, emp.Birthday);
 
 
 
-            //3、 根据海伦公式计算三角形的面积。
-            //海伦公式： 假设在平面内，有一个三角形，边长分别为 a、 b、 c，那么三角形的面积 S 可由海伦公式求得：
-            //S=Math.sqrt(p*(p-a)(p-b)(p-c)) 注：公式里的 p 为半周长： p=(a+b+c)/2
-            Triangle tri = new Triangle();
-            double a = tri.GetS(3,6,5);
-            Console.WriteLine(a);
         }
 
         //1.定义结构体要使用 struct 关键字，现在我们定义一个学员信息的结构体Student。
